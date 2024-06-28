@@ -23,29 +23,29 @@ jobs:
           username: ${{ secrets.ACR_USERNAME }}
           password: ${{ secrets.ACR_PASSWORD }}
 
-      - name: Pull confluence-server image from Docker Hub
-        run: docker pull atlassian/confluence-server:6.15.2
+      - name: Pull sonar-scanner image from Docker Hub
+        run: docker pull newtmitch/sonar-scanner:latest
 
-      - name: Tag confluence-server image for ACR
-        run: docker tag atlassian/confluence-server:6.15.2 ${{ env.ACR_REGISTRY }}/${{ secrets.ACR_NAMESPACE }}/confluence-server:6.15.2
+      - name: Tag sonar-scanner image for ACR
+        run: docker tag newtmitch/sonar-scanner:latest ${{ env.ACR_REGISTRY }}/${{ secrets.ACR_NAMESPACE }}/sonar-scanner:latest
 
-      - name: Push confluence-server image to Aliyun Registry
-        run: docker push ${{ env.ACR_REGISTRY }}/${{ secrets.ACR_NAMESPACE }}/confluence-server:6.15.2
+      - name: Push sonar-scanner image to Aliyun Registry
+        run: docker push ${{ env.ACR_REGISTRY }}/${{ secrets.ACR_NAMESPACE }}/sonar-scanner:latest
 
-      - name: Pull atlassian-jira-software image from Docker Hub
-        run: docker pull cptactionhank/atlassian-jira-software:8.0.2
+      - name: Pull sonarqube-server image from Docker Hub
+        run: docker pull docker.io/library/sonarqube:latest
 
-      - name: Tag atlassian-jira-software image for ACR
-        run: docker tag cptactionhank/atlassian-jira-software:8.0.2 ${{ env.ACR_REGISTRY }}/${{ secrets.ACR_NAMESPACE }}/atlassian-jira-software:8.0.2
+      - name: Tag sonarqube-server image for ACR
+        run: docker tag docker.io/library/sonarqube:latest ${{ env.ACR_REGISTRY }}/${{ secrets.ACR_NAMESPACE }}/sonarqube:latest
 
-      - name: Push atlassian-jira-software image to Aliyun Registry
-        run: docker push ${{ env.ACR_REGISTRY }}/${{ secrets.ACR_NAMESPACE }}/atlassian-jira-software:8.0.2
+      - name: Push sonarqube-server image to Aliyun Registry
+        run: docker push ${{ env.ACR_REGISTRY }}/${{ secrets.ACR_NAMESPACE }}/sonarqube:latest
 
-      - name: Pull mysql-server image from Docker Hub
-        run: docker pull mysql/mysql-server:5.7
+      - name: Pull postgresql image from Docker Hub
+        run: docker pull docker.io/bitnami/postgresql:latest
 
-      - name: Tag mysql-server image for ACR
-        run: docker tag mysql/mysql-server:5.7 ${{ env.ACR_REGISTRY }}/${{ secrets.ACR_NAMESPACE }}/mysql-server:5.7
+      - name: Tag postgresql image for ACR
+        run: docker tag docker.io/bitnami/postgresql:latest ${{ env.ACR_REGISTRY }}/${{ secrets.ACR_NAMESPACE }}/postgresql:latest
 
-      - name: Push mysql-server image to Aliyun Registry
-        run: docker push ${{ env.ACR_REGISTRY }}/${{ secrets.ACR_NAMESPACE }}/mysql-server:5.7
+      - name: Push postgresql image to Aliyun Registry
+        run: docker push ${{ env.ACR_REGISTRY }}/${{ secrets.ACR_NAMESPACE }}/postgresql:latest
