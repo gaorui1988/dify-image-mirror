@@ -23,29 +23,21 @@ jobs:
           username: ${{ secrets.ACR_USERNAME }}
           password: ${{ secrets.ACR_PASSWORD }}
 
-      - name: Pull sonar-scanner image from Docker Hub
-        run: docker pull newtmitch/sonar-scanner:latest
+      - name: Pull awalach/openvpn image from Docker Hub
+        run: docker pull awalach/openvpn:latest
 
-      - name: Tag sonar-scanner image for ACR
-        run: docker tag newtmitch/sonar-scanner:latest ${{ env.ACR_REGISTRY }}/${{ secrets.ACR_NAMESPACE }}/sonar-scanner:latest
+      - name: Tag awalach/openvpn image for ACR
+        run: docker tag awalach/openvpn:latest ${{ env.ACR_REGISTRY }}/${{ secrets.ACR_NAMESPACE }}/openvpn:latest
 
-      - name: Push sonar-scanner image to Aliyun Registry
-        run: docker push ${{ env.ACR_REGISTRY }}/${{ secrets.ACR_NAMESPACE }}/sonar-scanner:latest
+      - name: Push awalach/openvpn image to Aliyun Registry
+        run: docker push ${{ env.ACR_REGISTRY }}/${{ secrets.ACR_NAMESPACE }}/openvpn:latest
 
-      - name: Pull sonarqube-server image from Docker Hub
-        run: docker pull docker.io/library/sonarqube:latest
+      - name: Pull awalach/openvpn-web-ui image from Docker Hub
+        run: docker pull dawalach/openvpn-web-ui:latest
 
-      - name: Tag sonarqube-server image for ACR
-        run: docker tag docker.io/library/sonarqube:latest ${{ env.ACR_REGISTRY }}/${{ secrets.ACR_NAMESPACE }}/sonarqube:latest
+      - name: Tag awalach/openvpn-web-ui image for ACR
+        run: docker tag awalach/openvpn-web-ui:latest ${{ env.ACR_REGISTRY }}/${{ secrets.ACR_NAMESPACE }}/openvpn-web-ui:latest
 
-      - name: Push sonarqube-server image to Aliyun Registry
-        run: docker push ${{ env.ACR_REGISTRY }}/${{ secrets.ACR_NAMESPACE }}/sonarqube:latest
+      - name: Push awalach/openvpn-web-ui image to Aliyun Registry
+        run: docker push ${{ env.ACR_REGISTRY }}/${{ secrets.ACR_NAMESPACE }}/openvpn-web-ui:latest
 
-      - name: Pull postgresql image from Docker Hub
-        run: docker pull docker.io/bitnami/postgresql:latest
-
-      - name: Tag postgresql image for ACR
-        run: docker tag docker.io/bitnami/postgresql:latest ${{ env.ACR_REGISTRY }}/${{ secrets.ACR_NAMESPACE }}/postgresql:latest
-
-      - name: Push postgresql image to Aliyun Registry
-        run: docker push ${{ env.ACR_REGISTRY }}/${{ secrets.ACR_NAMESPACE }}/postgresql:latest
