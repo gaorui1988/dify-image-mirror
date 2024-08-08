@@ -23,21 +23,21 @@ jobs:
           username: ${{ secrets.ACR_USERNAME }}
           password: ${{ secrets.ACR_PASSWORD }}
 
-      - name: Pull awalach/openvpn image from Docker Hub
-        run: docker pull awalach/openvpn:latest
+      - name: Pull d3vilh/openvpn-server image from Docker Hub
+        run: docker pull d3vilh/openvpn-server:latest
 
-      - name: Tag awalach/openvpn image for ACR
-        run: docker tag awalach/openvpn:latest ${{ env.ACR_REGISTRY }}/${{ secrets.ACR_NAMESPACE }}/openvpn:latest
+      - name: Tag d3vilh/openvpn-server image for ACR
+        run: docker tag d3vilh/openvpn-server:latest ${{ env.ACR_REGISTRY }}/${{ secrets.ACR_NAMESPACE }}/openvpn-server:latest
 
-      - name: Push awalach/openvpn image to Aliyun Registry
-        run: docker push ${{ env.ACR_REGISTRY }}/${{ secrets.ACR_NAMESPACE }}/openvpn:latest
+      - name: Push d3vilh/openvpn-server image to Aliyun Registry
+        run: docker push ${{ env.ACR_REGISTRY }}/${{ secrets.ACR_NAMESPACE }}/openvpn-server:latest
 
-      - name: Pull awalach/openvpn-web-ui image from Docker Hub
-        run: docker pull dawalach/openvpn-web-ui:latest
+      - name: Pull d3vilh/openvpn-ui image from Docker Hub
+        run: docker pull d3vilh/openvpn-ui:latest
 
-      - name: Tag awalach/openvpn-web-ui image for ACR
-        run: docker tag awalach/openvpn-web-ui:latest ${{ env.ACR_REGISTRY }}/${{ secrets.ACR_NAMESPACE }}/openvpn-web-ui:latest
+      - name: Tag d3vilh/openvpn-ui image for ACR
+        run: docker tag d3vilh/openvpn-ui:latest ${{ env.ACR_REGISTRY }}/${{ secrets.ACR_NAMESPACE }}/openvpn-ui:latest
 
-      - name: Push awalach/openvpn-web-ui image to Aliyun Registry
-        run: docker push ${{ env.ACR_REGISTRY }}/${{ secrets.ACR_NAMESPACE }}/openvpn-web-ui:latest
+      - name: Push d3vilh/openvpn-ui image to Aliyun Registry
+        run: docker push ${{ env.ACR_REGISTRY }}/${{ secrets.ACR_NAMESPACE }}/openvpn-ui:latest
 
