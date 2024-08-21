@@ -24,10 +24,10 @@ jobs:
           password: ${{ secrets.ACR_PASSWORD }}
 
       - name: Pull sourcegraph/server image from Docker Hub
-        run: docker pull sourcegraph/server:latest
+        run: docker pull sourcegraph/server
 
       - name: Tag sourcegraph/server image for ACR
-        run: docker tag sourcegraph/server:latest ${{ env.ACR_REGISTRY }}/${{ secrets.ACR_NAMESPACE }}/sourcegraph:latest
+        run: docker tag sourcegraph/server ${{ env.ACR_REGISTRY }}/${{ secrets.ACR_NAMESPACE }}/sourcegraph:latest
 
       - name: Push sourcegraph/server image to Aliyun Registry
         run: docker push ${{ env.ACR_REGISTRY }}/${{ secrets.ACR_NAMESPACE }}/sourcegraph:latest
