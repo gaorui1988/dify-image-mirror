@@ -23,12 +23,12 @@ jobs:
           username: ${{ secrets.ACR_USERNAME }}
           password: ${{ secrets.ACR_PASSWORD }}
 
-      - name: Pull sourcegraph/server image from Docker Hub
-        run: docker pull sourcegraph/server:insiders
+      - name: Pull snipe/snipe-it image from Docker Hub
+        run: docker pull snipe/snipe-it:latest
 
-      - name: Tag sourcegraph/server image for ACR
-        run: docker tag sourcegraph/server:insiders ${{ env.ACR_REGISTRY }}/${{ secrets.ACR_NAMESPACE }}/sourcegraph:insiders
+      - name: Tag snipe/snipe-it image for ACR
+        run: docker tag snipe/snipe-it:latest ${{ env.ACR_REGISTRY }}/${{ secrets.ACR_NAMESPACE }}/snipe-it:latest
 
-      - name: Push sourcegraph/server image to Aliyun Registry
-        run: docker push ${{ env.ACR_REGISTRY }}/${{ secrets.ACR_NAMESPACE }}/sourcegraph:insiders
+      - name: Push snipe/snipe-it image to Aliyun Registry
+        run: docker push ${{ env.ACR_REGISTRY }}/${{ secrets.ACR_NAMESPACE }}/snipe-it:latest
 
