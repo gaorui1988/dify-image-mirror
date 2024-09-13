@@ -23,12 +23,12 @@ jobs:
           username: ${{ secrets.ACR_USERNAME }}
           password: ${{ secrets.ACR_PASSWORD }}
 
-      - name: Pull snipe/snipe-it image from Docker Hub
-        run: docker pull snipe/snipe-it:latest
+      - name: Pull mysql image from Docker Hub
+        run: docker pull mysql:5.7
 
-      - name: Tag snipe/snipe-it image for ACR
-        run: docker tag snipe/snipe-it:latest ${{ env.ACR_REGISTRY }}/${{ secrets.ACR_NAMESPACE }}/snipe-it:latest
+      - name: Tag mysql image for ACR
+        run: docker tag mysql:5.7 ${{ env.ACR_REGISTRY }}/${{ secrets.ACR_NAMESPACE }}/mysql:5.7
 
-      - name: Push snipe/snipe-it image to Aliyun Registry
-        run: docker push ${{ env.ACR_REGISTRY }}/${{ secrets.ACR_NAMESPACE }}/snipe-it:latest
+      - name: Push mysql image to Aliyun Registry
+        run: docker push ${{ env.ACR_REGISTRY }}/${{ secrets.ACR_NAMESPACE }}/mysql:5.7
 
