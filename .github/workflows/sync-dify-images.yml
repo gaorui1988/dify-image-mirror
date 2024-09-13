@@ -24,11 +24,11 @@ jobs:
           password: ${{ secrets.ACR_PASSWORD }}
 
       - name: Pull mysql image from Docker Hub
-        run: docker pull mysql:5.7
+        run: docker pull mysql:8.0
 
       - name: Tag mysql image for ACR
-        run: docker tag mysql:5.7 ${{ env.ACR_REGISTRY }}/${{ secrets.ACR_NAMESPACE }}/mysql:5.7
+        run: docker tag mysql:8.0 ${{ env.ACR_REGISTRY }}/${{ secrets.ACR_NAMESPACE }}/mysql:8.0
 
       - name: Push mysql image to Aliyun Registry
-        run: docker push ${{ env.ACR_REGISTRY }}/${{ secrets.ACR_NAMESPACE }}/mysql:5.7
+        run: docker push ${{ env.ACR_REGISTRY }}/${{ secrets.ACR_NAMESPACE }}/mysql:8.0
 
