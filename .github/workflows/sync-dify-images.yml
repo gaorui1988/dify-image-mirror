@@ -23,12 +23,12 @@ jobs:
           username: ${{ secrets.ACR_USERNAME }}
           password: ${{ secrets.ACR_PASSWORD }}
 
-      - name: Pull kafka-exporter image from Docker Hub
-        run: docker pull danielqsj/kafka-exporter:v1.2.0
+      - name: Pull vaultwarden_ldap image from Docker Hub
+        run: docker pull vaultwarden_ldap:latest
 
       - name: Tag kafka-exporter image for ACR
-        run: docker tag danielqsj/kafka-exporter:v1.2.0 ${{ env.ACR_REGISTRY }}/${{ secrets.ACR_NAMESPACE }}/kafka-exporter:v1.2.0
+        run: docker tag vaultwarden_ldap:latest ${{ env.ACR_REGISTRY }}/${{ secrets.ACR_NAMESPACE }}/vaultwarden_ldap:latest
 
       - name: Push kafka-exporter image to Aliyun Registry
-        run: docker push ${{ env.ACR_REGISTRY }}/${{ secrets.ACR_NAMESPACE }}/kafka-exporter:v1.2.0
+        run: docker push ${{ env.ACR_REGISTRY }}/${{ secrets.ACR_NAMESPACE }}/vaultwarden_ldap:latest
 
