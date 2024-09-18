@@ -23,12 +23,12 @@ jobs:
           username: ${{ secrets.ACR_USERNAME }}
           password: ${{ secrets.ACR_PASSWORD }}
 
-      - name: Pull vaultwarden_ldap image from Docker Hub
-        run: docker pull vaultwarden_ldap:latest
+      - name: Pull vividboarder/vaultwarden_ldap image from Docker Hub
+        run: docker pull vividboarder/vaultwarden_ldap:latest
 
-      - name: Tag kafka-exporter image for ACR
-        run: docker tag vaultwarden_ldap:latest ${{ env.ACR_REGISTRY }}/${{ secrets.ACR_NAMESPACE }}/vaultwarden_ldap:latest
+      - name: Tag vividboarder/vaultwarden_ldap image for ACR
+        run: docker tag vividboarder/vaultwarden_ldap:latest ${{ env.ACR_REGISTRY }}/${{ secrets.ACR_NAMESPACE }}/vaultwarden_ldap:latest
 
-      - name: Push kafka-exporter image to Aliyun Registry
+      - name: Push vividboarder/vaultwarden_ldap image to Aliyun Registry
         run: docker push ${{ env.ACR_REGISTRY }}/${{ secrets.ACR_NAMESPACE }}/vaultwarden_ldap:latest
 
