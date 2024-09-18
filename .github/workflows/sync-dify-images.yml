@@ -23,12 +23,12 @@ jobs:
           username: ${{ secrets.ACR_USERNAME }}
           password: ${{ secrets.ACR_PASSWORD }}
 
-      - name: Pull mysql image from Docker Hub
-        run: docker pull mysql:8.0
+      - name: Pull kafka-exporter image from Docker Hub
+        run: docker pull kafka-exporter:latest
 
-      - name: Tag mysql image for ACR
-        run: docker tag mysql:8.0 ${{ env.ACR_REGISTRY }}/${{ secrets.ACR_NAMESPACE }}/mysql:8.0
+      - name: Tag kafka-exporter image for ACR
+        run: docker tag kafka-exporter:latest ${{ env.ACR_REGISTRY }}/${{ secrets.ACR_NAMESPACE }}/kafka-exporter:latest
 
-      - name: Push mysql image to Aliyun Registry
-        run: docker push ${{ env.ACR_REGISTRY }}/${{ secrets.ACR_NAMESPACE }}/mysql:8.0
+      - name: Push kafka-exporter image to Aliyun Registry
+        run: docker push ${{ env.ACR_REGISTRY }}/${{ secrets.ACR_NAMESPACE }}/kafka-exporter:latest
 
