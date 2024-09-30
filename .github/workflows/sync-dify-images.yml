@@ -23,12 +23,12 @@ jobs:
           username: ${{ secrets.ACR_USERNAME }}
           password: ${{ secrets.ACR_PASSWORD }}
 
-      - name: Pull vividboarder/vaultwarden_ldap image from Docker Hub
-        run: docker pull vividboarder/vaultwarden_ldap:latest
+      - name: Pull nvidia/dcgm-exporter image from Docker Hub
+        run: docker pull nvidia/dcgm-exporter:latest
 
-      - name: Tag vividboarder/vaultwarden_ldap image for ACR
-        run: docker tag vividboarder/vaultwarden_ldap:latest ${{ env.ACR_REGISTRY }}/${{ secrets.ACR_NAMESPACE }}/vaultwarden_ldap:latest
+      - name: Tag nvidia/dcgm-exporter image for ACR
+        run: docker tag nvidia/dcgm-exporter:latest ${{ env.ACR_REGISTRY }}/${{ secrets.ACR_NAMESPACE }}/dcgm-exporter:latest
 
-      - name: Push vividboarder/vaultwarden_ldap image to Aliyun Registry
-        run: docker push ${{ env.ACR_REGISTRY }}/${{ secrets.ACR_NAMESPACE }}/vaultwarden_ldap:latest
+      - name: Push nvidia/dcgm-exporter image to Aliyun Registry
+        run: docker push ${{ env.ACR_REGISTRY }}/${{ secrets.ACR_NAMESPACE }}/dcgm-exporter:latest
 
