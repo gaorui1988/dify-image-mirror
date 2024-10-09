@@ -23,12 +23,12 @@ jobs:
           username: ${{ secrets.ACR_USERNAME }}
           password: ${{ secrets.ACR_PASSWORD }}
 
-      - name: Pull chaitin/blazehttp image from Docker Hub
+      - name: Pull chaitin/blazehttp:latest image from Docker Hub
         run: docker pull chaitin/blazehttp:latest
 
-      - name: Tag chaitin/blazehttp image for ACR
+      - name: Tag chaitin/blazehttp:latest image for ACR
         run: docker tag chaitin/blazehttp:latest ${{ env.ACR_REGISTRY }}/${{ secrets.ACR_NAMESPACE }}/blazehttp:latest
 
-      - name: Push chaitin/blazehttp image to Aliyun Registry
+      - name: Push chaitin/blazehttp:latest image to Aliyun Registry
         run: docker push ${{ env.ACR_REGISTRY }}/${{ secrets.ACR_NAMESPACE }}/blazehttp:latest
 
