@@ -23,12 +23,12 @@ jobs:
           username: ${{ secrets.ACR_USERNAME }}
           password: ${{ secrets.ACR_PASSWORD }}
 
-      - name: Pull mysql image from Docker Hub
-        run: docker pull samwaf/samwaf:latest
+      - name: Pull chaitin/blazehttp image from Docker Hub
+        run: docker pull chaitin/blazehttp:latest
 
-      - name: Tag mysql image for ACR
-        run: docker tag samwaf/samwaf:latest ${{ env.ACR_REGISTRY }}/${{ secrets.ACR_NAMESPACE }}/samwaf:latest
+      - name: Tag chaitin/blazehttp image for ACR
+        run: docker tag chaitin/blazehttp:latest ${{ env.ACR_REGISTRY }}/${{ secrets.ACR_NAMESPACE }}/blazehttp:latest
 
-      - name: Push mysql image to Aliyun Registry
-        run: docker push ${{ env.ACR_REGISTRY }}/${{ secrets.ACR_NAMESPACE }}/samwaf:latest
+      - name: Push chaitin/blazehttp image to Aliyun Registry
+        run: docker push ${{ env.ACR_REGISTRY }}/${{ secrets.ACR_NAMESPACE }}/blazehttp:latest
 
