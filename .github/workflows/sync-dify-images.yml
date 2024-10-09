@@ -23,12 +23,12 @@ jobs:
           username: ${{ secrets.ACR_USERNAME }}
           password: ${{ secrets.ACR_PASSWORD }}
 
-      - name: Pull nvidia/dcgm-exporter image from Docker Hub
-        run: docker pull nvidia/dcgm-exporter:3.3.8-3.6.0-ubuntu22.04
+      - name: Pull mysql image from Docker Hub
+        run: docker pull mysql:latest
 
-      - name: Tag nvidia/dcgm-exporter image for ACR
-        run: docker tag nvidia/dcgm-exporter:3.3.8-3.6.0-ubuntu22.04 ${{ env.ACR_REGISTRY }}/${{ secrets.ACR_NAMESPACE }}/dcgm-exporter:3.3.8-3.6.0-ubuntu22.04
+      - name: Tag mysql image for ACR
+        run: docker tag mysql:latest ${{ env.ACR_REGISTRY }}/${{ secrets.ACR_NAMESPACE }}/mysql:latest
 
-      - name: Push nvidia/dcgm-exporter image to Aliyun Registry
-        run: docker push ${{ env.ACR_REGISTRY }}/${{ secrets.ACR_NAMESPACE }}/dcgm-exporter:3.3.8-3.6.0-ubuntu22.04
+      - name: Push mysql image to Aliyun Registry
+        run: docker push ${{ env.ACR_REGISTRY }}/${{ secrets.ACR_NAMESPACE }}/mysql:latest
 
