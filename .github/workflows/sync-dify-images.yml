@@ -23,12 +23,12 @@ jobs:
           username: ${{ secrets.ACR_USERNAME }}
           password: ${{ secrets.ACR_PASSWORD }}
 
-      - name: Pull osticket/osticket:latest image from Docker Hub
+      - name: Pull tiredofit/osticket:latest image from Docker Hub
         run: docker pull osticket/osticket:latest
 
-      - name: Tag osticket/osticket:latest image for ACR
-        run: docker tag osticket/osticket:latest ${{ env.ACR_REGISTRY }}/${{ secrets.ACR_NAMESPACE }}/osticket:latest
+      - name: Tag tiredofit/osticket:latest image for ACR
+        run: docker tag tiredofit/osticket:latest ${{ env.ACR_REGISTRY }}/${{ secrets.ACR_NAMESPACE }}/tiredofit-osticket:latest
 
-      - name: Push osticket/osticket:latest image to Aliyun Registry
-        run: docker push ${{ env.ACR_REGISTRY }}/${{ secrets.ACR_NAMESPACE }}/osticket:latest
+      - name: Push tiredofit/osticket:latest image to Aliyun Registry
+        run: docker push ${{ env.ACR_REGISTRY }}/${{ secrets.ACR_NAMESPACE }}/tiredofit-osticket:latest
 
