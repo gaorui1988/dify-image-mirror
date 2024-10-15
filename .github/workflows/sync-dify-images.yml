@@ -24,7 +24,7 @@ jobs:
           password: ${{ secrets.ACR_PASSWORD }}
 
       - name: Pull tiredofit/osticket:latest image from Docker Hub
-        run: docker pull osticket/osticket:latest
+        run: docker pull tiredofit/osticket:latest
 
       - name: Tag tiredofit/osticket:latest image for ACR
         run: docker tag tiredofit/osticket:latest ${{ env.ACR_REGISTRY }}/${{ secrets.ACR_NAMESPACE }}/tiredofit-osticket:latest
