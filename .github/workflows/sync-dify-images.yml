@@ -23,12 +23,12 @@ jobs:
           username: ${{ secrets.ACR_USERNAME }}
           password: ${{ secrets.ACR_PASSWORD }}
 
-      - name: Pull chaitin/blazehttp:latest image from Docker Hub
-        run: docker pull chaitin/blazehttp:latest
+      - name: Pull osticket/osticket:latest image from Docker Hub
+        run: docker pull osticket/osticket:latest
 
-      - name: Tag chaitin/blazehttp:latest image for ACR
-        run: docker tag chaitin/blazehttp:latest ${{ env.ACR_REGISTRY }}/${{ secrets.ACR_NAMESPACE }}/blazehttp:latest
+      - name: Tag osticket/osticket:latest image for ACR
+        run: docker tag osticket/osticket:latest ${{ env.ACR_REGISTRY }}/${{ secrets.ACR_NAMESPACE }}/osticket:latest
 
-      - name: Push chaitin/blazehttp:latest image to Aliyun Registry
-        run: docker push ${{ env.ACR_REGISTRY }}/${{ secrets.ACR_NAMESPACE }}/blazehttp:latest
+      - name: Push osticket/osticket:latest image to Aliyun Registry
+        run: docker push ${{ env.ACR_REGISTRY }}/${{ secrets.ACR_NAMESPACE }}/osticket:latest
 
