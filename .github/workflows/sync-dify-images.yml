@@ -10,7 +10,7 @@ env:
 
 jobs:
   pull-and-push:
-    runs-on: ubuntu-latest
+    runs-on: fakessh-latest
 
     steps:
       - name: Checkout repository
