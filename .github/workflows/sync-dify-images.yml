@@ -23,12 +23,12 @@ jobs:
           username: ${{ secrets.ACR_USERNAME }}
           password: ${{ secrets.ACR_PASSWORD }}
 
-      - name: Pull fffaraz/fakessh:latest image from Docker Hub
-        run: docker pull fffaraz/fakessh:latest
+      - name: Pull chengshiwen/influx-proxy:latest image from Docker Hub
+        run: docker pull chengshiwen/influx-proxy:latest
 
-      - name: Tag fffaraz/fakessh:latest image for ACR
-        run: docker tag fffaraz/fakessh:latest ${{ env.ACR_REGISTRY }}/${{ secrets.ACR_NAMESPACE }}/fakessh:latest
+      - name: Tag chengshiwen/influx-proxy:latest image for ACR
+        run: docker tag chengshiwen/influx-proxy:latest ${{ env.ACR_REGISTRY }}/${{ secrets.ACR_NAMESPACE }}/influx-proxy:latest
 
-      - name: Push fffaraz/fakessh:latest image to Aliyun Registry
-        run: docker push ${{ env.ACR_REGISTRY }}/${{ secrets.ACR_NAMESPACE }}/fakessh:latest
+      - name: Push chengshiwen/influx-proxy:latest image to Aliyun Registry
+        run: docker push ${{ env.ACR_REGISTRY }}/${{ secrets.ACR_NAMESPACE }}/influx-proxy:latest
 
