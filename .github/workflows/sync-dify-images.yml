@@ -23,12 +23,12 @@ jobs:
           username: ${{ secrets.ACR_USERNAME }}
           password: ${{ secrets.ACR_PASSWORD }}
 
-      - name: Pull chengshiwen/influx-proxy:latest image from Docker Hub
-        run: docker pull chengshiwen/influx-proxy:latest
+      - name: Pull strapi:latest image from Docker Hub
+        run: docker pull strapi:latest
 
-      - name: Tag chengshiwen/influx-proxy:latest image for ACR
-        run: docker tag chengshiwen/influx-proxy:latest ${{ env.ACR_REGISTRY }}/${{ secrets.ACR_NAMESPACE }}/influx-proxy:latest
+      - name: Tag strapi:latest image for ACR
+        run: docker tag strapi:latest ${{ env.ACR_REGISTRY }}/${{ secrets.ACR_NAMESPACE }}/strapi:latest
 
       - name: Push chengshiwen/influx-proxy:latest image to Aliyun Registry
-        run: docker push ${{ env.ACR_REGISTRY }}/${{ secrets.ACR_NAMESPACE }}/influx-proxy:latest
+        run: docker push ${{ env.ACR_REGISTRY }}/${{ secrets.ACR_NAMESPACE }}/strapi:latest
 
