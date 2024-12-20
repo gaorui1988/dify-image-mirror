@@ -23,12 +23,12 @@ jobs:
           username: ${{ secrets.ACR_USERNAME }}
           password: ${{ secrets.ACR_PASSWORD }}
 
-      - name: Pull strapi:latest image from Docker Hub
-        run: docker pull strapi:latest
+      - name: Pull ghcr.io/ansible/awx_devel:devel image from Docker Hub
+        run: docker pull ghcr.io/ansible/awx_devel:devel
 
       - name: Tag strapi:latest image for ACR
-        run: docker tag strapi:latest ${{ env.ACR_REGISTRY }}/${{ secrets.ACR_NAMESPACE }}/strapi:latest
+        run: docker tag ghcr.io/ansible/awx_devel:devel ${{ env.ACR_REGISTRY }}/${{ secrets.ACR_NAMESPACE }}/awx_devel:devel
 
-      - name: Push chengshiwen/influx-proxy:latest image to Aliyun Registry
-        run: docker push ${{ env.ACR_REGISTRY }}/${{ secrets.ACR_NAMESPACE }}/strapi:latest
+      - name: Push ghcr.io/ansible/awx_devel:devel image to Aliyun Registry
+        run: docker push ${{ env.ACR_REGISTRY }}/${{ secrets.ACR_NAMESPACE }}/awx_devel:devel
 
