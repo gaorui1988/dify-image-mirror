@@ -23,12 +23,12 @@ jobs:
           username: ${{ secrets.ACR_USERNAME }}
           password: ${{ secrets.ACR_PASSWORD }}
 
-      - name: Pull ghcr.io/ansible/awx_devel:devel image from Docker Hub
-        run: docker pull ghcr.io/ansible/awx_devel:devel
+      - name: Pull rancher/rancher image from Docker Hub
+        run: docker pull rancher/rancher:latest
 
-      - name: Tag strapi:latest image for ACR
-        run: docker tag ghcr.io/ansible/awx_devel:devel ${{ env.ACR_REGISTRY }}/${{ secrets.ACR_NAMESPACE }}/awx_devel:devel
+      - name: Tag rancher/rancher:latest image for ACR
+        run: docker tag rancher/rancher:latest ${{ env.ACR_REGISTRY }}/${{ secrets.ACR_NAMESPACE }}/rancher:latest
 
-      - name: Push ghcr.io/ansible/awx_devel:devel image to Aliyun Registry
-        run: docker push ${{ env.ACR_REGISTRY }}/${{ secrets.ACR_NAMESPACE }}/awx_devel:devel
+      - name: Push rancher/rancher:latest image to Aliyun Registry
+        run: docker push ${{ env.ACR_REGISTRY }}/${{ secrets.ACR_NAMESPACE }}/rancher:latest
 
