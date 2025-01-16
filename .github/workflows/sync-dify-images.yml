@@ -23,12 +23,12 @@ jobs:
           username: ${{ secrets.ACR_USERNAME }}
           password: ${{ secrets.ACR_PASSWORD }}
 
-      - name: Pull rancher/rancher image from Docker Hub
-        run: docker pull rancher/rancher
+      - name: Pull busybox image from Docker Hub
+        run: docker pull busybox
 
-      - name: Tag rancher/rancher:latest image for ACR
-        run: docker tag rancher/rancher ${{ env.ACR_REGISTRY }}/${{ secrets.ACR_NAMESPACE }}/rancher:latest
+      - name: Tag busybox:latest image for ACR
+        run: docker tag busybox ${{ env.ACR_REGISTRY }}/${{ secrets.ACR_NAMESPACE }}/busybox:latest
 
-      - name: Push rancher/rancher image to Aliyun Registry
-        run: docker push ${{ env.ACR_REGISTRY }}/${{ secrets.ACR_NAMESPACE }}/rancher:latest
+      - name: Push busybox image to Aliyun Registry
+        run: docker push ${{ env.ACR_REGISTRY }}/${{ secrets.ACR_NAMESPACE }}/v:latest
 
