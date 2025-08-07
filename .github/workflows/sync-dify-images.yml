@@ -26,8 +26,8 @@ jobs:
       - name: Pull haxqer/jira image from Docker Hub
         run: docker pull haxqer/jira:9.17.5
 
-      - name: Tag busybox:latest image for ACR
-        run: docker tag haxqer/jira ${{ env.ACR_REGISTRY }}/${{ secrets.ACR_NAMESPACE }}/jira:9.17.5
+      - name: Tag haxqer/jira image for ACR
+        run: docker tag haxqer/jira:9.17.5 ${{ env.ACR_REGISTRY }}/${{ secrets.ACR_NAMESPACE }}/jira:9.17.5
 
       - name: Push haxqer/jira image to Aliyun Registry
         run: docker push ${{ env.ACR_REGISTRY }}/${{ secrets.ACR_NAMESPACE }}/jira:9.17.5
