@@ -10,7 +10,7 @@ env:
 
 jobs:
   pull-and-push:
-    runs-on: ubuntu-latest
+    runs-on: yyxx/openvpn
 
     steps:
       - name: Checkout repository
@@ -23,12 +23,12 @@ jobs:
           username: ${{ secrets.ACR_USERNAME }}
           password: ${{ secrets.ACR_PASSWORD }}
 
-      - name: Pull haxqer/jira image from Docker Hub
-        run: docker pull haxqer/jira:9.12.18
+      - name: Pull yyxx/openvpn image from Docker Hub
+        run: docker pull yyxx/openvpn:latest
 
-      - name: Tag haxqer/jira image for ACR
-        run: docker tag haxqer/jira:9.12.18 ${{ env.ACR_REGISTRY }}/${{ secrets.ACR_NAMESPACE }}/jira:9.12.18
+      - name: Tag yyxx/openvpn image for ACR
+        run: docker tag yyxx/openvpn:latest ${{ env.ACR_REGISTRY }}/${{ secrets.ACR_NAMESPACE }}/openvpn:latest
 
-      - name: Push haxqer/jira image to Aliyun Registry
-        run: docker push ${{ env.ACR_REGISTRY }}/${{ secrets.ACR_NAMESPACE }}/jira:9.12.18
+      - name: Push yyxx/openvpn image to Aliyun Registry
+        run: docker push ${{ env.ACR_REGISTRY }}/${{ secrets.ACR_NAMESPACE }}/openvpn:latest
 
