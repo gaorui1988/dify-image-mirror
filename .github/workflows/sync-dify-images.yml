@@ -1,6 +1,8 @@
 name: Sync dify images to ACR(Alibaba Cloud Container Registry)
 
 on:
+  #schedule:
+  #  - cron: '0 */4 * * *'
   workflow_dispatch:
 
 env:
@@ -20,14 +22,6 @@ jobs:
           registry: ${{ env.ACR_REGISTRY }}
           username: ${{ secrets.ACR_USERNAME }}
           password: ${{ secrets.ACR_PASSWORD }}
-
-      # 登录 GitHub Container Registry（使用 PAT）
-      - name: Login to GitHub Container Registry
-        uses: docker/login-action@v2
-        with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GHCR_PAT }}   # 注意这里改为新 secret
 
       - name: Pull ghcr.io/yikart/aitoearn-channel:latest image from Docker Hub
         run: docker pull ghcr.io/yikart/aitoearn-channel:latest
