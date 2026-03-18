@@ -1,0 +1,33 @@
+name: Sync dify images to ACR(Alibaba Cloud Container Registry)
+
+on:
+  #schedule:
+  #  - cron: '0 */4 * * *'
+  workflow_dispatch:
+
+env:
+  ACR_REGISTRY: registry.cn-hangzhou.aliyuncs.com
+
+jobs:
+  pull-and-push:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Login to the ACR
+        uses: docker/login-action@v2
+        with:
+          registry: ${{ env.ACR_REGISTRY }}
+          username: ${{ secrets.ACR_USERNAME }}
+          password: ${{ secrets.ACR_PASSWORD }}
+
+      - name: Pull ghcr.io/yikart/aitoearn-channel:latest image from Docker Hub
+        run: docker pull ghcr.io/yikart/aitoearn-channel:latest
+
+      - name: Tag ghcr.io/yikart/aitoearn-channel:latest image for ACR
+        run: docker tag ghcr.io/yikart/aitoearn-channel:latest ${{ env.ACR_REGISTRY }}/${{ secrets.ACR_NAMESPACE }}/aitoearn-channel:latest
+
+      - name: Push ghcr.io/yikart/aitoearn-channel:latest image to Aliyun Registry
+        run: docker push ${{ env.ACR_REGISTRY }}/${{ secrets.ACR_NAMESPACE }}/aitoearn-channel:latest
